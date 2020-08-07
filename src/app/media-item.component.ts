@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 // NOTE from LMC: nane can be used in the html document
 // Same with the wasWatched method
@@ -8,9 +8,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./media-item.component.css']
 })
 export class MediaItemComponent {
-  @Input('mediaItemToWatch') mediaItem;
+  @Input() mediaItem;
+  @Output() delete = new EventEmitter();
 
   onDelete() {
     console.log('deleted');
+    this.delete.emit(this.mediaItem);
   }
 }
